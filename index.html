@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ferrari Garage | Сравнение суперкаров</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-text">FERRARI <span class="accent">GARAGE</span></span>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="about.html">О Проекте</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      </nav>
+      
+      <button class="theme-toggle" id="themeToggle" title="Тёмная тема">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Герой-секция -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Итальянская <span class="highlight">Легенда</span></h1>
+        <p class="hero-subtitle">Полный обзор, характеристики и сравнение легендарных суперкаров Maranello.</p>
+        <div class="hero-buttons">
+          <a href="#models" class="btn btn-primary">Выбрать модель</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция моделей (Галерея) -->
+    <section id="models" class="section models-section">
+      <div class="container">
+        <h2 class="section-title">Наши <span class="accent">Модели</span></h2>
+        
+        <!-- Фильтры -->
+        <div class="gallery-filter">
+          <button class="filter-btn active" data-filter="all">Все модели</button>
+          <button class="filter-btn" data-filter="forza">Forza Ferrari</button>
+          <button class="filter-btn" data-filter="scuderia">Scuderia Ferrari</button>
+        </div>
+        
+        <div class="gallery-grid">
+          <!-- Карточка 1 - Forza -->
+          <figure class="gallery-item car-card" data-category="scuderia">
+            <div class="car-image">
+              <img src="images/499p.png" alt="Ferrari 499p Le Mans">
+              <div class="car-badge">Scuderia</div>
+            </div>
+            <figcaption>
+              <h3>Ferrari 499p LeMans</h3>
+              <p class="car-spec">3.0-litre V6 twin-turbocharged. • Formula 1 Perf</p>
+              <a href="addition-499p.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 2 - Scuderia -->
+          <figure class="gallery-item car-card" data-category="forza">
+            <div class="car-image">
+              <img src="images/f40.png" alt="Ferrari F40">
+              <div class="car-badge">Forza</div>
+            </div>
+            <figcaption>
+              <h3>F40</h3>
+              <p class="car-spec">2.9L twin-turbocharged V8 • 471 л.с. • 4.1 сек</p>
+              <a href="addition-f40.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 3 - Forza -->
+          <figure class="gallery-item car-card" data-category="forza">
+            <div class="car-image">
+              <img src="images/812s.png" alt="Ferrari 812 Superfast">
+              <div class="car-badge">Forza</div>
+            </div>
+            <figcaption>
+              <h3>812 Superfast</h3>
+              <p class="car-spec">6.5L V12 • 800 л.с. • 2.9 сек</p>
+              <a href="addition-812s.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 4 - Forza -->
+          <figure class="gallery-item car-card" data-category="forza">
+            <div class="car-image">
+              <img src="images/roma.png" alt="Ferrari Roma">
+              <div class="car-badge">Forza</div>
+            </div>
+            <figcaption>
+              <h3>Roma Convertible</h3>
+              <p class="car-spec">3.9L V8 • 620 л.с. • 3.4 сек</p>
+              <a href="addition-roma.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 5 - Scuderia -->
+          <figure class="gallery-item car-card" data-category="scuderia">
+            <div class="car-image">
+              <img src="images/gtb.png" alt="Ferrari 296 GTB">
+              <div class="car-badge">Scuderia</div>
+            </div>
+            <figcaption>
+              <h3>296 GTB</h3>
+              <p class="car-spec">3.0L V6 + Motor • 830 л.с. • 3.1 сек</p>
+              <a href="addition-296gtb.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 6 - Scuderia -->
+          <figure class="gallery-item car-card" data-category="scuderia">
+            <div class="car-image">
+              <img src="images/488p.png" alt="Ferrari 488 Pista">
+              <div class="car-badge">Scuderia</div>
+            </div>
+            <figcaption>
+              <h3>488 Pista</h3>
+              <p class="car-spec">3.9L V8 + Twin-Turbo • 720 л.с. • 3.0 сек</p>
+              <a href="addition-488p.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 7 - Forza -->
+          <figure class="gallery-item car-card" data-category="forza">
+            <div class="car-image">
+              <img src="images/puro.png" alt="Ferrari Purosangue">
+              <div class="car-badge">Forza</div>
+            </div>
+            <figcaption>
+              <h3>Purosangue</h3>
+              <p class="car-spec">6.5L V12 • 725 л.с. • 3.3 сек</p>
+              <a href="addition-purosangue.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 8 - Scuderia -->
+          <figure class="gallery-item car-card" data-category="scuderia">
+            <div class="car-image">
+              <img src="images/sf05.png" alt="SF05 Formula 1">
+              <div class="car-badge">Scuderia</div>
+            </div>
+            <figcaption>
+              <h3>SF05 Formula 1</h3>
+              <p class="car-spec">3.0L V10 • 845 л.с. • 2.5 сек</p>
+              <a href="addition-f1.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+
+          <!-- Карточка 9 - Forza -->
+          <figure class="gallery-item car-card" data-category="scuderia">
+            <div class="car-image">
+              <img src="images/daytona.png" alt="Ferrari Daytona SP3">
+              <div class="car-badge">Scuderia</div>
+            </div>
+            <figcaption>
+              <h3>Ferrari Daytona SP3</h3>
+              <p class="car-spec">6.5L V12 • 829 л.с. • 2.85 сек</p>
+              <a href="addition-daysp.html" class="btn-details">Подробнее</a>
+            </figcaption>
+          </figure>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ СРАВНЕНИЯ -->
+    <section id="comparison" class="section comparison-section">
+      <div class="container">
+        <h2 class="section-title">Интерактивное <span class="accent">Сравнение</span></h2>
+        <p class="section-desc">Выберите до 3 моделей для детального сравнения характеристик</p>
+        
+        <div class="comparison-controls">
+          <div class="car-selector">
+            <label for="car1">Автомобиль 1:</label>
+            <select id="car1" class="car-select">
+              <option value="">-- Выберите модель --</option>
+              <option value="499 LM">499p LM</option>
+              <option value="f40">F40</option>
+              <option value="812">812 Superfast</option>
+              <option value="roma">Roma</option>
+              <option value="296gtb">296 GTB</option>
+              <option value="488p">488 Pista</option>
+              <option value="purosangue">Purosangue</option>
+              <option value="sc05">SC05 Formula 1</option>
+              <option value="Daytona SP3">Daytona SP3</option>
+            </select>
+          </div>
+          
+          <div class="car-selector">
+            <label for="car2">Автомобиль 2:</label>
+            <select id="car2" class="car-select">
+              <option value="">-- Выберите модель --</option>
+              <option value="499 LM">499p LM</option>
+              <option value="f40">F40</option>
+              <option value="812">812 Superfast</option>
+              <option value="roma">Roma</option>
+              <option value="296gtb">296 GTB</option>
+              <option value="488p">488 Pista</option>
+              <option value="purosangue">Purosangue</option>
+              <option value="sc05">SC05 Formula 1</option>
+              <option value="Daytona SP3">Daytona SP3</option>
+            </select>
+          </div>
+          
+          <div class="car-selector">
+            <label for="car3">Автомобиль 3 (опционально):</label>
+            <select id="car3" class="car-select">
+              <option value="">-- Не выбрано --</option>
+              <option value="499 LM">499p LM</option>
+              <option value="f40">F40</option>
+              <option value="812">812 Superfast</option>
+              <option value="roma">Roma</option>
+              <option value="296gtb">296 GTB</option>
+              <option value="488p">488 Pista</option>
+              <option value="purosangue">Purosangue</option>
+              <option value="sc05">SC 05 Formula 1</option>
+              <option value="Daytona SP3">Daytona SP3</option>
+            </select>
+          </div>
+          
+          <button class="btn btn-primary" id="compareBtn">
+            <i class="fas fa-exchange-alt"></i> Сравнить
+          </button>
+        </div>
+
+        <div class="table-wrapper" id="comparisonTableWrapper" style="display: none;">
+          <table class="data-table comparison-table">
+            <thead>
+              <tr>
+                <th>Характеристика</th>
+                <th id="header-car1">Модель 1</th>
+                <th id="header-car2">Модель 2</th>
+                <th id="header-car3" style="display: none;">Модель 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Двигатель</strong></td><td id="data-car1-engine">-</td><td id="data-car2-engine">-</td><td id="data-car3-engine" style="display: none;">-</td></tr>
+              <tr><td><strong>Мощность</strong></td><td id="data-car1-power">-</td><td id="data-car2-power">-</td><td id="data-car3-power" style="display: none;">-</td></tr>
+              <tr><td><strong>Крутящий момент</strong></td><td id="data-car1-torque">-</td><td id="data-car2-torque">-</td><td id="data-car3-torque" style="display: none;">-</td></tr>
+              <tr><td><strong>Разгон 0-100 км/ч</strong></td><td id="data-car1-acceleration">-</td><td id="data-car2-acceleration">-</td><td id="data-car3-acceleration" style="display: none;">-</td></tr>
+              <tr><td><strong>Максимальная скорость</strong></td><td id="data-car1-topspeed">-</td><td id="data-car2-topspeed">-</td><td id="data-car3-topspeed" style="display: none;">-</td></tr>
+              <tr><td><strong>Привод</strong></td><td id="data-car1-drive">-</td><td id="data-car2-drive">-</td><td id="data-car3-drive" style="display: none;">-</td></tr>
+              <tr><td><strong>Коробка передач</strong></td><td id="data-car1-transmission">-</td><td id="data-car2-transmission">-</td><td id="data-car3-transmission" style="display: none;">-</td></tr>
+              <tr><td><strong>Вес</strong></td><td id="data-car1-weight">-</td><td id="data-car2-weight">-</td><td id="data-car3-weight" style="display: none;">-</td></tr>
+              <tr><td><strong>Расход топлива</strong></td><td id="data-car1-fuel">-</td><td id="data-car2-fuel">-</td><td id="data-car3-fuel" style="display: none;">-</td></tr>
+              <tr><td><strong>Цена (от)</strong></td><td id="data-car1-price">-</td><td id="data-car2-price">-</td><td id="data-car3-price" style="display: none;">-</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="comparisonMessage" class="comparison-message">
+          <i class="fas fa-info-circle"></i> Выберите автомобили и нажмите "Сравнить"
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция звука двигателя (ПРОСТАЯ ВЕРСИЯ) -->
+    <section class="section car-sound-section">
+      <div class="container">
+        <h2 class="section-title">Послушайте <span class="accent">Двигатель</span></h2>
+        <p class="section-desc">Выберите модель и нажмите для воспроизведения звука</p>
+        
+        <div class="car-sound-wrapper">
+          <div class="car-select-box">
+            <label for="carSoundSelect">Выберите модель:</label>
+            <select id="carSoundSelect" class="car-sound-select">
+              <option value="">-- Выберите автомобиль --</option>
+              <option value="499 LM" data-sound="sounds/499p.mp3">499p LM</option>
+              <option value="f40" data-sound="sounds/f40.mp3">F40</option>
+              <option value="812" data-sound="sounds/812s.mp3">812 Superfast</option>
+              <option value="roma" data-sound="sounds/roma.mp3">Roma</option>
+              <option value="296gtb" data-sound="sounds/296gtb.mp3">296 GTB</option>
+              <option value="488p" data-sound="sounds/pistas.mp3">488 Pista</option>
+              <option value="purosangue" data-sound="sounds/purosangue.mp3">Purosangue</option>
+              <option value="sc05" data-sound="sounds/f105.mp3">SC05 Formula 1</option>
+              <option value="Daytona SP3" data-sound="sounds/sp3.mp3">Daytona SP3</option>
+            </select>
+          </div>
+          
+          <button class="gas-btn" id="gasBtn" disabled>
+            <i class="fas fa-volume-up"></i>
+            <span>Нажмите для звука</span>
+          </button>
+          
+          <div class="sound-status" id="soundStatus">
+            <i class="fas fa-circle"></i> Выберите модель
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <h3>FERRARI GARAGE</h3>
+        <p>Неофициальный фан-сайт и гид по моделям.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Карта сайта</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://t.me/XuseNekiy" target="_blank">
+          <i class="fab fa-telegram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ferrari Garage Project. Designed for Students.</p>
+      <p class="counter">Просмотров страницы: <span id="viewCounter">0</span></p>
+    </div>
+  </footer>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImage" alt="">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

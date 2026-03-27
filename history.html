@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ferrari Garage | Сравнение суперкаров</title>
+  <!-- Подключаем шрифт Montserrat для спортивного стиля -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<script src="script.js"></script>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <!-- Текстовый логотип в стиле Ferrari -->
+        <span class="logo-text">FERRARI <span class="accent">GARAGE</span></span>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="about.html">О Проекте</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      </nav>
+      
+      <button class="theme-toggle" id="themeToggle" title="Тёмная тема (Ночь гонки)">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+  
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея - Ferrari Garage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Сетка галереи -->
+<div class="gallery-grid" id="galleryGrid">
+    <!-- Фото 1 -->
+    <div class="gallery-item" data-category="Legend">
+        <img src="images/michael.jpg" alt="Michael Schumacher" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Michael Schumacher</h3>
+            <p>Самый знаменитый гонщик формулы 1</p>
+        </div>
+    </div>
+
+    <!-- Фото 2 -->
+    <div class="gallery-item" data-category="Legend">
+        <img src="images/hamilton.jpg" alt="Lewis Hamilton" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Люис Хамильтон</h3>
+            <p>Семикратный чемпинон мира формулы 1</p>
+        </div>
+    </div>
+
+    <!-- Фото 3 -->
+    <div class="gallery-item" data-category="Bolide">
+        <img src="images/sf04.jpg" alt="sf26loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Легедарный Болид Феррари 2004 года</h3>
+            <p>Болид Формулы 1</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Секция с фактами -->
+    <section class="facts-section">
+        <h2 class="section-title">ИНТЕРЕСНЫЕ ФАКТЫ</h2>
+        
+        <div class="facts-grid">
+            <div class="fact-card">
+                <div class="fact-icon">🏁</div>
+                <h3>Первая победа</h3>
+                <p>Первая победа Ferrari в гонке состоялась 11 мая 1947 года на автодроме в Риме. Пилот Франко Кортезе на Ferrari 125 S одержал историческую победу.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="fact-icon">🐎</div>
+                <h3>Логотип</h3>
+                <p>Знаменитый логотип с гарцующим жеребцом был создан графиней Паолиной Баракка для своего сына-аса, а Энцо Феррари использовал его в память о герое.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="fact-icon">🔴</div>
+                <h3>Rosso Corsa</h3>
+                <p>Красный цвет Ferrari (Rosso Corsa) стал официальным цветом итальянских гоночных автомобилей в 1920-х годах и остается символом бренда по сей день.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="fact-icon">⚡</div>
+                <h3>LaFerrari</h3>
+                <p>LaFerrari разгоняется до 100 км/ч менее чем за 3 секунды и имеет мощность 963 л.с., сочетая V12 двигатель с электрическим мотором.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция побед -->
+    <section class="victories-section">
+        <h2 class="section-title">ПОБЕДЫ В АВТОСПОРТЕ</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1951</div>
+                <div class="timeline-content">
+                    <h3>Первая победа в чемпионате</h3>
+                    <p>Alberto Ascari выигрывает первый чемпионат мира для Ferrari на трассе Silverstone.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1961</div>
+                <div class="timeline-content">
+                    <h3>Phil Hill - чемпион</h3>
+                    <p>Phil Hill становится чемпионом мира на Ferrari 156 "Sharknose".</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1975-1979</div>
+                <div class="timeline-content">
+                    <h3>Эра Ники Лауды</h3>
+                    <p>Niki Lauda выигрывает два чемпионских титула (1975, 1977) на Ferrari 312T.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2000-2004</div>
+                <div class="timeline-content">
+                    <h3>Доминирование Шумахера</h3>
+                    <p>Michael Schumacher выигрывает 5 чемпионатов подряд, устанавливая рекорды.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>Charles Leclerc</h3>
+                    <p>Победа в Monaco GP и возвращение Ferrari на вершину Формулы-1.</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">16</div>
+                <div class="stat-label">Чемпионатов конструкторов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Чемпионатов пилотов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">243+</div>
+                <div class="stat-label">Побед в Гран-при</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">75+</div>
+                <div class="stat-label">Лет в Формуле-1</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev">‹</button>
+        <button class="lightbox-next" id="lightboxNext">›</button>
+        <img src="" alt="" id="lightboxImg">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

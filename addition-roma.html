@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roma | Ferrari Garage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ========================================
+       ПЕРЕМЕННЫЕ
+       ======================================== */
+    :root {
+      --ferrari-red: #D40000;
+      --ferrari-dark: #1a1a1a;
+      --ferrari-grey: #f4f4f4;
+      --text-main: #111111;
+      --text-secondary: #555555;
+      --white: #ffffff;
+      --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+      --border-light: #e0e0e0;
+      --font-main: 'Montserrat', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --ferrari-grey: #121212;
+      --white: #1e1e1e;
+      --text-main: #f0f0f0;
+      --text-secondary: #aaaaaa;
+      --border-light: #333333;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--white);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; }
+
+    /* ========================================
+       HEADER
+       ======================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--ferrari-red);
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    [data-theme="dark"] .header { background: rgba(30, 30, 30, 0.95); }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+
+    .logo-text .accent { color: var(--ferrari-red); }
+
+    .nav-list { display: flex; gap: 30px; }
+
+    .nav-list a {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--ferrari-red);
+      transition: 0.3s;
+    }
+
+    .nav-list a:hover::after, .nav-list a.active::after { width: 100%; }
+
+    .nav-toggle { 
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.5rem; 
+      cursor: pointer; 
+      color: var(--text-main); 
+    }
+
+    .theme-toggle {
+      background: var(--ferrari-grey);
+      border: none;
+      width: 40px; 
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--text-main);
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+    }
+
+    /* ========================================
+       CAR HERO
+       ======================================== */
+    .car-hero {
+      padding: 80px 0 60px;
+      background: var(--ferrari-grey);
+      text-align: center;
+    }
+
+    .car-badge-type {
+      display: inline-block;
+      background: var(--ferrari-red);
+      color: white;
+      padding: 8px 24px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .car-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .car-subtitle {
+      font-size: 1.3rem;
+      color: var(--ferrari-red);
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .car-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-weight: 600;  /* ← Добавьте эту строку */
+}
+
+    /* ========================================
+       GALLERY
+       ======================================== */
+    .car-gallery {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .gallery-grid-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .gallery-item-large {
+      grid-row: span 2;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-item-large img,
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item-large:hover img,
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ========================================
+       VIDEO
+       ======================================== */
+    .car-video {
+      padding: 80px 0;
+      background: var(--ferrari-grey);
+    }
+
+    .video-wrapper {
+      margin-top: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+
+    /* ========================================
+       SPECS
+       ======================================== */
+    .car-specs {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .spec-item {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--ferrari-grey);
+      border-radius: 12px;
+      border-top: 4px solid var(--ferrari-red);
+      transition: transform 0.3s;
+    }
+
+    .spec-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .spec-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ferrari-red);
+      margin-bottom: 10px;
+    }
+
+    .spec-label {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer { 
+      background: var(--ferrari-dark); 
+      color: white; 
+      padding: 50px 0 20px; 
+    }
+
+    .footer-content { 
+      display: flex; 
+      justify-content: space-between; 
+      flex-wrap: wrap; 
+      gap: 30px; 
+      border-bottom: 1px solid #333; 
+      padding-bottom: 30px; 
+    }
+
+    .footer-logo h3 { 
+      font-style: italic; 
+      font-weight: 800; 
+      color: var(--ferrari-red); 
+      margin-bottom: 10px; 
+    }
+
+    .footer-social a { 
+      color: white; 
+      font-size: 1.2rem; 
+      margin-left: 15px; 
+    }
+
+    .footer-social a:hover { 
+      color: var(--ferrari-red); 
+    }
+
+    .footer-bottom { 
+      text-align: center; 
+      padding-top: 20px; 
+      font-size: 0.85rem; 
+      opacity: 0.5; 
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 992px) {
+      .gallery-grid-3 {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-item-large {
+        grid-row: span 1;
+      }
+      
+      .specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .car-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-list { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        right: 0; 
+        background: var(--white); 
+        flex-direction: column; 
+        padding: 20px; 
+        box-shadow: var(--shadow-md); 
+      }
+      
+      .nav-list.show { display: flex; }
+      .nav-toggle { display: block; }
+      
+      .footer-content { 
+        flex-direction: column; 
+        text-align: center; 
+      }
+      
+      .footer-social a { margin: 0 10px; }
+    }
+
+    @media (max-width: 600px) {
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .car-title {
+        font-size: 1.8rem;
+      }
+      
+      .car-subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Тёмная тема для секций */
+    [data-theme="dark"] .car-hero,
+    [data-theme="dark"] .car-video {
+      background: #121212;
+    }
+
+    [data-theme="dark"] .car-gallery,
+    [data-theme="dark"] .car-specs {
+      background: var(--white);
+    }
+
+    [data-theme="dark"] .gallery-item-large,
+    [data-theme="dark"] .gallery-item,
+    [data-theme="dark"] .spec-item {
+      background: #1e1e1e;
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-text">FERRARI <span class="accent">GARAGE</span></span>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="about.html">О Проекте</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" title="Тёмная тема">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Заголовок машины -->
+    <section class="car-hero">
+      <div class="container">
+        <div class="car-badge-type">FORZA</div>
+        <h1 class="car-title">Ferrari Roma</h1>
+        <p class="car-subtitle">Стиль вне времени. Ярость под открытым небом.</p>
+        
+        <div class="car-intro">
+          <p>Roma — это воплощение итальянской «La Nuova Dolce Vita», перенесенное на 
+         Roma Spider — это воплощение итальянской «La Nuova Dolce Vita», перенесенное на
+         о своей мощи, а соблазняет элегантностью Ferrari. Но не позволяйте мягкому
+         верху обмануть вас: под этим изысканным кузовом скрывается 3,9-литровый V8 с
+         двойным турбонаддувом, признанный одним из лучших двигателей последних десятилетий.
+        </div>
+      </div>
+    </section>
+
+    <!-- Галерея изображений -->
+    <section class="car-gallery">
+      <div class="container">
+        <h2 class="section-title">Галерея</h2>
+        <div class="gallery-grid-3">
+          <div class="gallery-item-large">
+            <img src="images/romapic.jpg" alt="g">
+          </div>
+          <div class="gallery-item">
+            <img src="images/romapic2.jpg" alt="Дd">
+          </div>
+          <div class="gallery-item">
+            <img src="images/812pc3.jpg" alt="dр">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Видео -->
+    <section class="car-video">
+      <div class="container">
+        <h2 class="section-title">Видео</h2>
+        <div class="video-wrapper">
+          <video controls poster="images/romaposter.png">
+            <source src="videos/videoplayback.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Характеристики -->
+    <section class="car-specs">
+      <div class="container">
+        <h2 class="section-title">Характеристики</h2>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-value">789</div>
+            <div class="spec-label">л.с. Мощность</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">3.4</div>
+            <div class="spec-label">сек 0-100 км/ч</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">320</div>
+            <div class="spec-label">км/ч Макс. скорость</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">3.9L</div>
+            <div class="spec-label">V8 Twin Turbo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <h3>FERRARI GARAGE</h3>
+        <p>Неофициальный фан-сайт и гид по моделям.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://t.me/XuseNekiy" target="_blank">
+          <i class="fab fa-telegram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ferrari Garage Project.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Тема
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.setAttribute('data-theme', 'dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.body.getAttribute('data-theme') === 'dark';
+      document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      themeIcon.classList.toggle('fa-moon');
+      themeIcon.classList.toggle('fa-sun');
+    });
+
+    // Мобильное меню
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.querySelector('.nav-list');
+    if (navToggle && navList) {
+      navToggle.addEventListener('click', () => {
+        navList.classList.toggle('show');
+        const icon = navToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+    }
+  </script>
+</body>
+</html>

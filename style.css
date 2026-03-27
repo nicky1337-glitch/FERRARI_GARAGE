@@ -1,0 +1,2163 @@
+/* ========================================
+   ПЕРЕМЕННЫЕ И БАЗА (FERRARI STYLE)
+   ======================================== */
+   :root {
+    /* Цвета */
+    --ferrari-red: #D40000;       /* Rosso Corsa */
+    --ferrari-dark: #1a1a1a;
+    --ferrari-grey: #f4f4f4;
+    --text-main: #111111;
+    --text-secondary: #555555;
+    --white: #ffffff;
+    
+    /* Тени и границы */
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+    --border-light: #e0e0e0;
+    
+    /* Шрифты */
+    --font-main: 'Montserrat', sans-serif;
+  }
+  
+  [data-theme="dark"] {
+    --ferrari-grey: #121212;
+    --white: #1e1e1e;
+    --text-main: #f0f0f0;
+    --text-secondary: #aaaaaa;
+    --border-light: #333333;
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: var(--font-main);
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  a { text-decoration: none; color: inherit; transition: 0.3s; }
+  ul { list-style: none; }
+  
+  /* Кнопки */
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px; /* Чуть скругленные, но строгие */
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+  }
+  
+  .btn-primary {
+    background-color: var(--ferrari-red);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #b00000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 0, 0, 0.4);
+  }
+  
+  .btn-outline-light {
+    border-color: white;
+    color: white;
+    background: transparent;
+  }
+  
+  .btn-outline-light:hover {
+    background: white;
+    color: black;
+  }
+  
+  .btn-block { width: 100%; }
+  
+  /* Заголовки */
+  .section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+  
+  .accent { color: var(--ferrari-red); }
+  .highlight { color: var(--ferrari-red); font-style: italic; }
+  
+  .section { padding: 80px 0; }
+  .section-desc { text-align: center; color: var(--text-secondary); margin-bottom: 40px; }
+  
+  /* ========================================
+     HEADER
+     ======================================== */
+  .header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--ferrari-red);
+    z-index: 1000;
+    padding: 15px 0;
+  }
+  
+  [data-theme="dark"] .header { background: rgba(30, 30, 30, 0.95); }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 60px;
+    margin-right: 10px;
+    margin-top: -5px;
+    vertical-align: middle;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1px;
+  }
+  
+  .nav-list { display: flex; gap: 30px; }
+  .nav-list a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--ferrari-red);
+    transition: 0.3s;
+  }
+  
+  .nav-list a:hover::after, .nav-list a.active::after { width: 100%; }
+  
+  .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
+  .theme-toggle {
+    background: var(--ferrari-grey);
+    border: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex; align-items: center; justify-content: center;
+  }
+  
+  /* ========================================
+     HERO SECTION
+     ======================================== */
+  .hero {
+    height: 90vh;
+    background-image: url("images/sf24.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-attachment: fixed;
+  }
+
+  .hero {
+      min-width: 100vh;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+  
+  .hero-buttons { display: flex; gap: 20px; justify-content: center; }
+  
+  /* ========================================
+     ГАЛЕРЕЯ МОДЕЛЕЙ
+     ======================================== */
+  .gallery-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+    padding: 10px 24px;
+    background: transparent;
+    border: 2px solid var(--border-light);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--ferrari-red);
+    background: var(--ferrari-red);
+    color: white;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  
+  .car-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-light);
+  }
+  
+  .car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .car-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  
+  .car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  
+  .car-card:hover .car-image img { transform: scale(1.1); }
+  
+  .car-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--ferrari-red);
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+  }
+  
+  figcaption { padding: 20px; text-align: left; }
+  figcaption h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; }
+  .car-spec { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px; font-family: monospace; }
+  .btn-details {
+    background: none;
+    border: none;
+    color: var(--ferrari-red);
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 0;
+  }
+  .btn-details:hover { text-decoration: underline; }
+  
+  .car-card.hidden { display: none; }
+  
+  /* ========================================
+     ТАБЛИЦА СРАВНЕНИЯ
+     ======================================== */
+  .table-wrapper {
+    overflow-x: auto;
+    box-shadow: var(--shadow-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    min-width: 600px;
+  }
+  
+  .data-table th, .data-table td {
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+  }
+  
+  .data-table th {
+    background: var(--ferrari-dark);
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover { background: var(--ferrari-grey); }
+  .data-table td:first-child { font-weight: 700; color: var(--ferrari-red); }
+
+  /* ========================================
+   ИНТЕРАКТИВНОЕ СРАВНЕНИЕ
+   ======================================== */
+.comparison-section {
+  background: var(--ferrari-grey);
+  padding: 80px 0;
+}
+
+.comparison-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--ferrari-red);
+}
+
+.car-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 250px;
+  flex: 1;
+  max-width: 300px;
+}
+
+.car-selector label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.car-select {
+  padding: 14px 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23D40000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 45px;
+}
+
+.car-select:hover {
+  border-color: var(--ferrari-red);
+}
+
+.car-select:focus {
+  outline: none;
+  border-color: var(--ferrari-red);
+  box-shadow: 0 0 0 3px rgba(212, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .car-select {
+  background-color: var(--bg-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23DC0000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+#compareBtn {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+#compareBtn i {
+  font-size: 1.1rem;
+}
+
+.comparison-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.comparison-message i {
+  margin-right: 10px;
+  color: var(--ferrari-red);
+}
+
+/* Адаптивность для сравнения */
+@media (max-width: 992px) {
+  .comparison-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .car-selector {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  #compareBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-selector {
+    min-width: 100%;
+  }
+  
+  .car-select {
+    font-size: 0.95rem;
+    padding: 12px 15px;
+  }
+}
+  
+  /* ========================================
+     ВИДЕО И СПИСКИ
+     ======================================== */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+  }
+  
+  .features-list {
+    counter-reset: feature-counter;
+    margin-top: 20px;
+  }
+  
+  .features-list li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .features-list li::before {
+    counter-increment: feature-counter;
+    content: counter(feature-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--ferrari-red);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  
+  /* ========================================
+     ФОРМА
+     ======================================== */
+  .contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--ferrari-grey);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 4px solid var(--ferrari-red);
+  }
+  
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+  
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--text-main);
+  }
+  
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--ferrari-red);
+    box-shadow: 0 0 0 3px rgba(212, 0, 0, 0.1);
+  }
+  
+  .error-message { color: var(--ferrari-red); font-size: 0.8rem; margin-top: 5px; display: block; }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  .form-success.show { display: block; animation: fadeIn 0.5s; }
+  
+  /* ========================================
+     СЛАЙДЕР И ФУТЕР
+     ======================================== */
+  .slider { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; }
+  .slider-track { display: flex; transition: transform 0.5s ease; }
+  .slide { min-width: 100%; padding: 40px; text-align: center; background: var(--ferrari-grey); border-radius: 8px; }
+  .slide blockquote { font-size: 1.3rem; font-style: italic; margin-bottom: 20px; }
+  .slide cite { font-weight: 700; color: var(--ferrari-red); font-style: normal; }
+  
+  .slider-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: white; border: none; width: 40px; height: 40px;
+    border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-sm);
+    color: var(--ferrari-red); z-index: 10;
+  }
+  .slider-btn.prev { left: 10px; } .slider-btn.next { right: 10px; }
+  .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .dot { width: 10px; height: 10px; background: #ccc; border-radius: 50%; cursor: pointer; }
+  .dot.active { background: var(--ferrari-red); }
+
+  
+  .footer { background: var(--ferrari-dark); color: white; padding: 50px 0 20px; margin-top: 60px; }
+  .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; border-bottom: 1px solid #333; padding-bottom: 30px; }
+  .footer-logo h3 { font-style: italic; font-weight: 800; color: var(--ferrari-red); margin-bottom: 10px; }
+  .footer-links a { margin-right: 20px; font-size: 0.9rem; opacity: 0.7; }
+  .footer-links a:hover { opacity: 1; color: var(--ferrari-red); }
+  .footer-social a { color: white; font-size: 1.2rem; margin-left: 15px; }
+  .footer-social a:hover { color: var(--ferrari-red); }
+  .footer-bottom { text-align: center; padding-top: 20px; font-size: 0.85rem; opacity: 0.5; }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .nav-list { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 20px; box-shadow: var(--shadow-md); }
+    .nav-list.show { display: flex; }
+    .nav-toggle { display: block; }
+    .hero h1 { font-size: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-social a { margin: 0 10px; }
+  }
+  
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  /* ========== Gallery Page Styles ========== */
+
+/* Герой секция */
+.gallery-hero {
+    background: linear-gradient(135deg, #ff2800 0%, #800000 100%);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+}
+
+.gallery-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.gallery-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Фильтры */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #ff2800;
+    color: white;
+    border-color: #ff2800;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 40, 0, 0.3);
+}
+
+/* Сетка галереи */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    padding: 0 20px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #fff;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+    padding: 30px 20px 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ff2800;
+}
+
+.gallery-overlay p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+}
+
+/* Видео */
+.video-item {
+    position: relative;
+}
+
+.video-thumbnail {
+    position: relative;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 40, 0, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.play-button:hover {
+    background: #ff2800;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.gallery-video {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.gallery-video.show {
+    display: block;
+}
+
+/* Секция фактов */
+.facts-section,
+.victories-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #ff2800;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.fact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.fact-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.fact-card h3 {
+    color: #ff2800;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.fact-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Timeline побед */
+.timeline {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: #ff2800;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.timeline-year {
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff2800;
+    font-size: 1.3rem;
+    padding: 10px;
+    background: white;
+    border: 2px solid #ff2800;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 0 30px;
+}
+
+.timeline-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #ff2800, #800000);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 40, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 40px;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: #ff2800;
+    transform: scale(1.2);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .gallery-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(odd) {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .timeline-year {
+        width: 80px;
+        font-size: 1rem;
+    }
+    
+    .timeline-content {
+        padding-left: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+:root {
+    --ferrari-red: #DC0000;
+    --ferrari-yellow: #FFF200;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F5F5;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #E0E0E0;
+    --card-bg: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --border-color: #333333;
+    --card-bg: #141414;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
+
+/* ⚠️ Убрали глобальный сброс * { } */
+
+/* Стили только для страницы О проекте */
+.about-page body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-page header {
+    background-color: var(--bg-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.about-page .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-page .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.about-page .ferrari-logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FFF200 0%, #FFD700 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.about-page .brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.about-page .brand-name .ferrari {
+    color: var(--text-primary);
+}
+
+.about-page .brand-name .garage {
+    color: var(--ferrari-red);
+}
+
+.about-page nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.about-page nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.about-page nav a:hover,
+.about-page nav a.active {
+    color: var(--ferrari-red);
+}
+
+.about-page nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--ferrari-red);
+}
+
+.about-page .theme-toggle {
+    width: 45px;
+    height: 45px;
+    border: 2px solid var(--text-primary);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.about-page .theme-toggle:hover {
+    background-color: var(--ferrari-red);
+    border-color: var(--ferrari-red);
+    transform: rotate(180deg);
+}
+
+.about-page .theme-toggle .sun,
+.about-page .theme-toggle .moon {
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] .about-page .theme-toggle .sun {
+    display: none;
+}
+
+[data-theme="light"] .about-page .theme-toggle .moon {
+    display: none;
+}
+
+/* Main Content */
+.about-page main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+.about-page .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    letter-spacing: 3px;
+}
+
+.about-page .page-subtitle {
+    text-align: center;
+    color: var(--ferrari-red);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+
+.about-page .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+.about-page .about-section {
+    background-color: var(--card-bg);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px var(--shadow);
+    border-left: 5px solid var(--ferrari-red);
+}
+
+.about-page .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.about-page .section-title::before {
+    content: '';
+    width: 40px;
+    height: 3px;
+    background-color: var(--ferrari-red);
+}
+
+.about-page .section-text {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-page .highlight {
+    color: var(--ferrari-red);
+    font-weight: 700;
+}
+
+.about-page .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.about-page .stat-card {
+    background: linear-gradient(135deg, var(--ferrari-red) 0%, #B30000 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(220, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.about-page .stat-card:hover {
+    transform: translateY(-10px);
+}
+
+.about-page .stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.about-page .stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.about-page .passion-section {
+    background-color: var(--bg-secondary);
+    padding: 80px 60px;
+    border-radius: 20px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.about-page .passion-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.about-page .passion-text {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 900px;
+    margin: 0 auto 40px;
+    line-height: 1.9;
+}
+
+.about-page .quote {
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ferrari-red);
+    border-left: 4px solid var(--ferrari-red);
+    padding-left: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+}
+
+.about-page .quote-author {
+    font-style: normal;
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    text-align: right;
+}
+
+.about-page .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.about-page .feature-card {
+    background-color: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px var(--shadow);
+    border-top: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.about-page .feature-card:hover {
+    border-top-color: var(--ferrari-red);
+    transform: translateY(-5px);
+}
+
+.about-page .feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.about-page .feature-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.about-page .feature-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.about-page footer {
+    background-color: var(--bg-secondary);
+    border-top: 2px solid var(--border-color);
+    padding: 40px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.about-page .footer-text {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.about-page .footer-accent {
+    color: var(--ferrari-red);
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .about-page .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-page .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-page .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page .header-container {
+        padding: 0 20px;
+    }
+    
+    .about-page nav ul {
+        gap: 20px;
+    }
+    
+    .about-page main {
+        padding: 40px 20px;
+    }
+    
+    .about-page .page-title {
+        font-size: 36px;
+    }
+    
+    .about-page .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-page .about-section {
+        padding: 30px;
+    }
+}
+/* ========================================
+   ИСПРАВЛЕНИЕ ТЁМНОЙ ТЕМЫ ДЛЯ КАРТОЧЕК
+   ======================================== */
+
+/* Карточки в тёмной теме */
+[data-theme="dark"] .car-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+/* Заголовки машин в тёмной теме */
+[data-theme="dark"] figcaption h3 {
+  color: var(--text-primary);
+}
+
+/* Характеристики в тёмной теме */
+[data-theme="dark"] .car-spec {
+  color: var(--text-secondary);
+}
+
+/* Кнопка "Подробнее" в тёмной теме */
+[data-theme="dark"] .btn-details {
+  color: var(--ferrari-red);
+}
+
+[data-theme="dark"] .btn-details:hover {
+  color: #ff4444;
+}
+
+/* Бейджи (Forza/Scuderia) - остаются красными */
+.car-badge {
+  background: var(--ferrari-red);
+  color: white;
+}
+
+/* Фильтры в тёмной теме */
+[data-theme="dark"] .filter-btn {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+[data-theme="dark"] .filter-btn:hover,
+[data-theme="dark"] .filter-btn.active {
+  border-color: var(--ferrari-red);
+  background: var(--ferrari-red);
+  color: white;
+}
+
+/* Таблица сравнения в тёмной теме */
+[data-theme="dark"] .data-table {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .data-table th {
+  background: var(--ferrari-dark);
+  color: white;
+}
+
+[data-theme="dark"] .data-table td {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .data-table tr:hover {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .data-table td:first-child {
+  color: var(--ferrari-red);
+}
+/* ========================================
+   ИНТЕРАКТИВНЫЙ ВЫБОР МАШИНЫ
+   ======================================== */
+.car-selector-section {
+  background: var(--ferrari-grey);
+  padding: 80px 0;
+}
+
+.interactive-car-display {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--ferrari-red);
+}
+
+.car-select-wrapper {
+  margin-bottom: 30px;
+}
+
+.car-select-wrapper label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.car-model-select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.car-model-select:hover,
+.car-model-select:focus {
+  border-color: var(--ferrari-red);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 0, 0, 0.1);
+}
+
+.car-display-area {
+  position: relative;
+  height: 300px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  border-radius: 8px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .car-display-area {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.car-placeholder {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.car-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.car-display-area img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: none;
+  transition: opacity 0.3s;
+}
+
+.car-display-area img.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.car-name-display {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.car-name-display.active {
+  opacity: 1;
+}
+
+/* Тахометр */
+.tachometer-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.tachometer {
+  width: 280px;
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tachometer-face {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 140px 140px 0 0;
+  position: relative;
+  border: 4px solid #333;
+  border-bottom: none;
+  box-shadow: inset 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.tachometer-numbers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 140px 140px 0 0;
+}
+
+.tachometer-numbers .num {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(calc(var(--i) * 18deg - 90deg)) 
+             translate(0, -55px) 
+             rotate(calc(-1 * (var(--i) * 18deg - 90deg)));
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+}
+
+.tachometer-numbers .num:nth-child(n+6) {
+  color: var(--ferrari-red);
+}
+
+.tachometer-needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 110px;
+  background: var(--ferrari-red);
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(-90deg);
+  border-radius: 2px 2px 0 0;
+  transition: transform 0.1s ease-out;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(212, 0, 0, 0.8);
+}
+
+.tachometer-center {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.rpm-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.rpm-label {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Педаль газа */
+.pedal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.gas-pedal {
+  width: 140px;
+  height: 180px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 4px solid #444;
+  border-radius: 20px 20px 40px 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.1s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.gas-pedal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.gas-pedal:active,
+.gas-pedal.pressed {
+  transform: translateY(10px) rotateX(-10deg);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border-color: var(--ferrari-red);
+}
+
+.pedal-text {
+  color: white;
+  font-weight: 800;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gas-pedal i {
+  color: var(--ferrari-red);
+  font-size: 2rem;
+}
+
+.pedal-hint {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .interactive-car-display {
+    padding: 25px;
+  }
+  
+  .car-display-area {
+    height: 200px;
+  }
+  
+  .tachometer {
+    width: 240px;
+    height: 120px;
+  }
+  
+  .gas-pedal {
+    width: 120px;
+    height: 150px;
+  }
+  
+  .pedal-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tachometer {
+    width: 200px;
+    height: 100px;
+  }
+  
+  .rpm-value {
+    font-size: 1.5rem;
+  }
+  
+  .gas-pedal {
+    width: 100px;
+    height: 130px;
+  }
+  
+  .pedal-text {
+    font-size: 1rem;
+  }
+  
+  .gas-pedal i {
+    font-size: 1.5rem;
+  }
+}
+/* Кнопка включения звука */
+.audio-enable {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: var(--ferrari-grey);
+  border-radius: 8px;
+}
+
+.audio-enable p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+[data-theme="dark"] .audio-enable {
+  background: var(--bg-secondary);
+}
+/* Секция звука двигателя */
+.car-sound-section {
+  background: var(--ferrari-grey);
+  padding: 60px 0;
+}
+
+.car-sound-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--ferrari-red);
+  text-align: center;
+}
+
+.car-select-box {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.car-select-box label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.car-sound-select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.car-sound-select:hover,
+.car-sound-select:focus {
+  border-color: var(--ferrari-red);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 0, 0, 0.1);
+}
+
+/* Кнопка газа */
+.gas-btn {
+  width: 100%;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, var(--ferrari-red) 0%, #b00000 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gas-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 0, 0, 0.4);
+}
+
+.gas-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.gas-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.gas-btn.playing {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.gas-btn i {
+  font-size: 1.5rem;
+}
+
+/* Статус */
+.sound-status {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sound-status.playing {
+  color: var(--ferrari-red);
+  font-weight: 600;
+}
+
+.sound-status i {
+  font-size: 0.8rem;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .car-sound-wrapper {
+    padding: 25px;
+  }
+  
+  .gas-btn {
+    padding: 16px 30px;
+    font-size: 1rem;
+  }
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .car-sound-wrapper {
+  background: var(--card-bg);
+}
+/* ========================================
+   СТРАНИЦА АВТОМОБИЛЯ
+   ======================================== */
+
+/* Герой секция машины */
+.car-hero {
+  padding: 80px 0 60px;
+  background: var(--ferrari-grey);
+  text-align: center;
+}
+
+.car-badge-scuderia {
+  display: inline-block;
+  background: var(--ferrari-red);
+  color: white;
+  padding: 8px 24px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.car-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.car-subtitle {
+  font-size: 1.3rem;
+  color: var(--ferrari-red);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.car-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Галерея */
+.car-gallery {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.gallery-grid-3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.gallery-item-large {
+  grid-row: span 2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-item-large img,
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.gallery-item-large:hover img,
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* Видео */
+.car-video {
+  padding: 80px 0;
+  background: var(--ferrari-grey);
+}
+
+.video-wrapper {
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.video-wrapper video {
+  width: 100%;
+  display: block;
+}
+
+/* Характеристики */
+.car-specs {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.spec-item {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--ferrari-grey);
+  border-radius: 12px;
+  border-top: 4px solid var(--ferrari-red);
+  transition: transform 0.3s;
+}
+
+.spec-item:hover {
+  transform: translateY(-5px);
+}
+
+.spec-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--ferrari-red);
+  margin-bottom: 10px;
+}
+
+.spec-label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .gallery-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-item-large {
+    grid-row: span 1;
+  }
+  
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .car-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .car-title {
+    font-size: 1.8rem;
+  }
+  
+  .car-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .car-intro {
+    font-size: 1rem;
+  }
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .car-hero,
+[data-theme="dark"] .car-video {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .car-gallery,
+[data-theme="dark"] .car-specs {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .gallery-item-large,
+[data-theme="dark"] .gallery-item,
+[data-theme="dark"] .spec-item {
+  background: var(--card-bg);
+}
